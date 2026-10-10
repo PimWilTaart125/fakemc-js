@@ -6,15 +6,15 @@ const server = new MinecraftStatusServer({
     host: "0.0.0.0",
     port: 25565,
 
-    versionName: "FakeMCServer",
-    motd: "§aWelcome to FakeMCServer!",
+    versionName: "Offline",
+    motd: "§6» §e§lSERVER MAINTENANCE §6«",
 
-    maxPlayers: 20,
-    players: ["ExamplePlayer"],
+    maxPlayers: 0,
+    players: ["Nerd"],
 
     iconPath: "./server-icon.png",
 
-    kickMessage: "You cannot join this server!",
+    kickMessage: "Get tf out bro.",
     kickMessagePath: "./kickmessage.txt",
 });
 
