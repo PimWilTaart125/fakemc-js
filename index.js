@@ -1,3 +1,4 @@
+"use strict";
 
 const MinecraftStatusServer = require("./MinecraftStatusServer");
 
@@ -5,16 +6,26 @@ const server = new MinecraftStatusServer({
     host: "0.0.0.0",
     port: 25565,
 
-    // Shown in the multiplayer server list
     versionName: "FakeMCServer",
     motd: "§aWelcome to FakeMCServer!",
 
-    // Match the original Main.java behavior:
     maxPlayers: 20,
     players: ["ExamplePlayer"],
 
     iconPath: "./server-icon.png",
-    kickMessagePath: "./kickmessage.txt"
+
+    kickMessage: "You cannot join this server!",
+    kickMessagePath: "./kickmessage.txt",
 });
 
 server.start();
+
+process.on("SIGINT", () => {
+    server.stop();
+    setTimeout(() => process.exit(0), 200);
+});
+
+process.on("SIGTERM", () => {
+    server.stop();
+    setTimeout(() => process.exit(0), 200);
+});
