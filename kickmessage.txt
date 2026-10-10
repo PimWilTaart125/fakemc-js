@@ -1,0 +1,2 @@
+§cThis server is currently not accepting players!
+§7Please try again later.
