@@ -90,7 +90,6 @@ class MinecraftStatusServer {
         socket.on("timeout", () => socket.destroy());
 
         socket.on("error", () => {
-            // Client disconnects and connection errors are normal.
         });
 
         socket.on("close", () => {
@@ -102,12 +101,11 @@ class MinecraftStatusServer {
     processData(client, chunk) {
         client.buffer = Buffer.concat([client.buffer, chunk]);
 
-        // A TCP data event can contain part of a packet or several packets.
         while (client.buffer.length > 0 && !client.closed) {
             const result = readPacket(client.buffer);
 
             if (!result) {
-                return; // Wait for more TCP data.
+                return; 
             }
 
             client.buffer = result.remaining;
@@ -134,10 +132,8 @@ class MinecraftStatusServer {
                 throw new Error("Missing protocol version");
             }
 
-            // Server address string.
             readString(packet, cursor);
 
-            // Server port (unsigned short).
             if (cursor.offset + 2 > packet.length) {
                 throw new Error("Incomplete handshake port");
             }
@@ -170,7 +166,6 @@ class MinecraftStatusServer {
         }
 
         if (client.state === "login") {
-            // Login Start packet.
             if (packetId === 0) {
                 this.sendLoginDisconnect(client);
             }
@@ -214,14 +209,12 @@ class MinecraftStatusServer {
     }
 
     sendPong(client, packet, cursor) {
-        // Ping packet consists of packet ID + an eight-byte timestamp.
         if (cursor.offset + 8 > packet.length) {
             throw new Error("Incomplete ping packet");
         }
 
         const payload = packet.subarray(cursor.offset, cursor.offset + 8);
 
-        // Pong packet ID is 1, followed by the identical eight bytes.
         this.sendPacket(client.socket, 1, payload);
     }
 
@@ -232,7 +225,6 @@ class MinecraftStatusServer {
             text: message,
         });
 
-        // Login Disconnect: packet ID 0 followed by a JSON component.
         this.sendPacket(client.socket, 0, writeString(component));
         client.socket.end();
     }
@@ -253,14 +245,12 @@ class MinecraftStatusServer {
         if (!this.iconPath) return null;
 
         try {
-            // Also allow a data URI to be passed directly.
             if (this.iconPath.startsWith("data:image/png;base64,")) {
                 return this.iconPath;
             }
 
             const image = fs.readFileSync(this.iconPath);
 
-            // Verify PNG signature.
             const pngSignature = Buffer.from([
                 0x89, 0x50, 0x4e, 0x47,
                 0x0d, 0x0a, 0x1a, 0x0a,
@@ -276,7 +266,6 @@ class MinecraftStatusServer {
 
             return `data:image/png;base64,${image.toString("base64")}`;
         } catch {
-            // The icon is optional.
             return null;
         }
     }
@@ -327,7 +316,6 @@ class MinecraftStatusServer {
     }
 }
 
-// ---------------- Packet helpers ----------------
 
 function readPacket(buffer) {
     const lengthInfo = tryReadVarInt(buffer, 0);
@@ -388,7 +376,6 @@ function readVarInt(buffer, cursor) {
 
     cursor.offset += result.bytes;
 
-    // Convert to signed 32-bit integer for protocol values.
     return result.value | 0;
 }
 
