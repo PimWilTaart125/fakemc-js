@@ -9,9 +9,9 @@ class MinecraftStatusServer {
         this.host = options.host ?? "0.0.0.0";
         this.port = options.port ?? 25565;
 
-        this.versionName = options.versionName ?? "FakeMCServer";
-        this.motd = options.motd ?? "Welcome to FakeMCServer!";
-        this.maxPlayers = options.maxPlayers ?? 20;
+        this.versionName = options.versionName ?? "Offline";
+        this.motd = options.motd ?? "&6&o[!] Server Maintenance [!]";
+        this.maxPlayers = options.maxPlayers ?? 0;
         this.players = options.players ?? [];
 
         this.iconPath = options.iconPath ?? "./server-icon.png";
