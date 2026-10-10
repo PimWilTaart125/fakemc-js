@@ -10,11 +10,11 @@ const server = new MinecraftStatusServer({
     motd: "§6» §e§lSERVER MAINTENANCE §6«",
 
     maxPlayers: 0,
-    players: ["Nerd"],
+    players: ["I can't believe it's not Minecraft Java Edition"],
 
     iconPath: "./server-icon.png",
 
-    kickMessage: "Get tf out bro.",
+    kickMessage: "We are currently under maintenance!",
     kickMessagePath: "./kickmessage.txt",
 });
 
