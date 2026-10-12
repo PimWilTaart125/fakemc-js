@@ -1,3 +1,4 @@
+
 "use strict";
 
 const MinecraftStatusServer = require("./MinecraftStatusServer");
@@ -6,15 +7,15 @@ const server = new MinecraftStatusServer({
     host: "0.0.0.0",
     port: 25565,
 
-    versionName: "Offline",
-    motd: "§6» §e§lSERVER MAINTENANCE §6«",
+    versionName: "Maintenance Mode",
+    versionIncompatible: true,
 
-    maxPlayers: 0,
-    players: ["I can't believe it's not Minecraft Java Edition"],
+    motd: "§cServer maintenance\n§7Please check back soon!",
+    maxPlayers: 20,
+    players: ["Maintenance"],
 
     iconPath: "./server-icon.png",
-
-    kickMessage: "We are currently under maintenance!",
+    kickMessage: "The server is currently under maintenance.",
     kickMessagePath: "./kickmessage.txt",
 });
 
