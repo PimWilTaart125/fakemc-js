@@ -7,7 +7,7 @@ const server = new MinecraftStatusServer({
     host: "0.0.0.0",
     port: 25565,
 
-    versionName: "Maintenance Mode",
+    versionName: "Offline",
     versionIncompatible: true,
 
     motd: "§cServer maintenance\n§7Please check back soon!",
@@ -18,7 +18,6 @@ const server = new MinecraftStatusServer({
     "§7The server is currently",
     "§7taking a little nap...",
     "§8§m━━━━━━━━━━━━━━━━",
-    "§ehehe boii §7ツ",
     "§aWe'll be back soon!",
     "§8§m━━━━━━━━━━━━━━━━",
     "§bThanks for your patience!",
