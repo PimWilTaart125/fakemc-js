@@ -10,6 +10,7 @@ class MinecraftStatusServer {
         this.port = options.port ?? 25565;
 
         this.versionName = options.versionName ?? "Offline";
+        this.versionIncompatible = options.versionIncompatible ?? true;
         this.motd = options.motd ?? "&6&o[!] Server Maintenance [!]";
         this.maxPlayers = options.maxPlayers ?? 0;
         this.players = options.players ?? [];
@@ -183,8 +184,10 @@ class MinecraftStatusServer {
 
         const status = {
             version: {
-                name: this.versionName,
-                protocol: client.protocol,
+              name: this.versionName,
+              protocol: this.versionIncompatible
+                  ? 999999
+                  : client.protocol,
             },
             players: {
                 max: this.maxPlayers,
@@ -291,6 +294,7 @@ class MinecraftStatusServer {
             "host",
             "port",
             "versionName",
+            "versionIncompatible",
             "motd",
             "maxPlayers",
             "players",
