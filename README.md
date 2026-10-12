@@ -44,6 +44,7 @@ const server = new MinecraftStatusServer({
     port: 25565,
 
     versionName: "FakeMCServer",
+    versionIncompatible: false,
     motd: "§cServer maintenance\n§7Please check back soon!",
 
     maxPlayers: 20,
@@ -65,6 +66,7 @@ server.start();
 | `host` | Network interface to listen on. |
 | `port` | TCP port used by FakeMCServer. |
 | `versionName` | Version text displayed in the server list. |
+| `versionIncompatible` | Show the version name as incompatible in the server list. |
 | `motd` | Message displayed in the server list. |
 | `maxPlayers` | Maximum player count displayed. |
 | `players` | Sample player names shown in the server list. |
