@@ -186,7 +186,7 @@ class MinecraftStatusServer {
             version: {
               name: this.versionName,
               protocol: this.versionIncompatible
-                  ? 999999
+                  ? 0
                   : client.protocol,
             },
             players: {
