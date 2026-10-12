@@ -12,7 +12,18 @@ const server = new MinecraftStatusServer({
 
     motd: "§cServer maintenance\n§7Please check back soon!",
     maxPlayers: 20,
-    players: ["Maintenance"],
+    players: [
+    "§8§m━━━━━━━━━━━━━━━━",
+    "§c§l⚠ MAINTENANCE ⚠",
+    "§7The server is currently",
+    "§7taking a little nap...",
+    "§8§m━━━━━━━━━━━━━━━━",
+    "§ehehe boii §7ツ",
+    "§aWe'll be back soon!",
+    "§8§m━━━━━━━━━━━━━━━━",
+    "§bThanks for your patience!",
+    "§8§m━━━━━━━━━━━━━━━━"
+],
 
     iconPath: "./server-icon.png",
     kickMessage: "The server is currently under maintenance.",
